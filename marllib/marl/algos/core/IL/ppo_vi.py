@@ -10,6 +10,11 @@ from marllib.marl.algos.utils.vi import apply_vi
 
 IPPO_VI_CONFIG = copy.deepcopy(PPO_CONFIG)
 IPPO_VI_CONFIG.update({
+    "entropy_coeff_schedule": [
+        [0, 0.02],        # start: explore nhiều
+        [50000, 0.01],    # giảm dần
+        [100000, 0.001],  # gần cuối: exploit
+    ],
     "tau_vi": 0.05,
     "anchor_update_freq": 10,
     "vi_lr": None,              # nếu None thì dùng config["lr"]
