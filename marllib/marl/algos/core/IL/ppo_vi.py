@@ -71,9 +71,9 @@ def apply_vi(model: torch.nn.Module, anchor_params: List[torch.Tensor], tau_vi: 
 IPPO_VI_CONFIG = copy.deepcopy(PPO_CONFIG)
 IPPO_VI_CONFIG.update(
     {
-        "tau_vi": 0.005,
-        "anchor_update_freq": 2,
-        "vi_lr": 5e-5,                # None -> dùng config["lr"]
+        "tau_vi": 0.05,
+        "anchor_update_freq": 10,
+        "vi_lr": None,                # None -> dùng config["lr"]
         "vi_betas": (0.9, 0.999),
         "vi_eps": 1e-5,
         "vi_weight_decay": 0.0,
